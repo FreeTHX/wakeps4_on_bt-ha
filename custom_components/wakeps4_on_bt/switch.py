@@ -1,19 +1,18 @@
 """Support for wakeps4 on bt."""
 import logging
+
 import voluptuous as vol
 
-from homeassistant.components.switch import PLATFORM_SCHEMA, SwitchDevice
 import homeassistant.helpers.config_validation as cv
+from homeassistant.components.switch import PLATFORM_SCHEMA, SwitchDevice
+
+from .const import (CONF_ADAPTER, CONF_DUALSHOCK_BT_ADDRESS,
+                    CONF_PLAYSTATION4_BT_ADDRESS, DOMAIN,
+                    SERVICE_SEND_MAGIC_PACKET, WOBTPS4_PREFIX)
 
 _LOGGER = logging.getLogger(__name__)
 
 
-from .const import (DOMAIN,
-                   CONF_DUALSHOCK_BT_ADDRESS,
-                   CONF_PLAYSTATION4_BT_ADDRESS,
-                   SERVICE_SEND_MAGIC_PACKET,
-                   WOBTPS4_PREFIX,
-                   CONF_ADAPTER)
 
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({

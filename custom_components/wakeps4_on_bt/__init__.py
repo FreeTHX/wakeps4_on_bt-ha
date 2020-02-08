@@ -5,14 +5,15 @@ For more details about this component, please refer to the documentation at
 https://home-assistant.io/components/wakeps4_on_bt/
 """
 import logging
+
 import voluptuous as vol
-from .const import (DOMAIN, CONF_DUALSHOCK_BT_ADDRESS,
-                   CONF_PLAYSTATION4_BT_ADDRESS,
-                   SERVICE_SEND_MAGIC_PACKET,
-                   SERVICE_GET_BT_ADDR,
-                   CONF_ADAPTER)
+
 import homeassistant.helpers.config_validation as cv
 import wakeps4onbt
+
+from .const import (CONF_ADAPTER, CONF_DUALSHOCK_BT_ADDRESS,
+                    CONF_PLAYSTATION4_BT_ADDRESS, DOMAIN, SERVICE_GET_BT_ADDR,
+                    SERVICE_SEND_MAGIC_PACKET)
 
 _LOGGER = logging.getLogger(__name__)
 
