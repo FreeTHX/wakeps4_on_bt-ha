@@ -6,20 +6,25 @@ import voluptuous as vol
 import homeassistant.helpers.config_validation as cv
 from homeassistant.components.switch import PLATFORM_SCHEMA, SwitchDevice
 
-from .const import (CONF_ADAPTER, CONF_DUALSHOCK_BT_ADDRESS,
-                    CONF_PLAYSTATION4_BT_ADDRESS, DOMAIN,
-                    SERVICE_SEND_MAGIC_PACKET, WOBTPS4_PREFIX)
+from .const import (
+    CONF_ADAPTER,
+    CONF_DUALSHOCK_BT_ADDRESS,
+    CONF_PLAYSTATION4_BT_ADDRESS,
+    DOMAIN,
+    SERVICE_SEND_MAGIC_PACKET,
+    WOBTPS4_PREFIX,
+)
 
 _LOGGER = logging.getLogger(__name__)
 
 
-
-
-PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
-    vol.Required(CONF_ADAPTER): cv.string,
-    vol.Required(CONF_DUALSHOCK_BT_ADDRESS): cv.string,
-    vol.Required(CONF_PLAYSTATION4_BT_ADDRESS): cv.string
-})
+PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
+    {
+        vol.Required(CONF_ADAPTER): cv.string,
+        vol.Required(CONF_DUALSHOCK_BT_ADDRESS): cv.string,
+        vol.Required(CONF_PLAYSTATION4_BT_ADDRESS): cv.string,
+    }
+)
 
 
 def setup_platform(hass, config, add_entities, discovery_info=None):
@@ -28,8 +33,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     dsbt_address = config.get(CONF_DUALSHOCK_BT_ADDRESS)
     ps4bt_address = config.get(CONF_PLAYSTATION4_BT_ADDRESS)
 
-    add_entities([WOBTPS4Switch(
-        hass, adapter, ps4bt_address, dsbt_address)], True)
+    add_entities([WOBTPS4Switch(hass, adapter, ps4bt_address, dsbt_address)], True)
 
 
 class WOBTPS4Switch(SwitchDevice):
@@ -41,7 +45,7 @@ class WOBTPS4Switch(SwitchDevice):
         self._adapter = adapter
         self._ps4bt_address = ps4bt_address
         self._dsbt_address = dsbt_address
-        self._state = False # always False, we can not know
+        self._state = False  # always False, we can not know
 
     @property
     def is_on(self):
@@ -55,14 +59,15 @@ class WOBTPS4Switch(SwitchDevice):
 
     def turn_on(self, **kwargs):
         """Turn the device on."""
-        self._hass.services.call(DOMAIN,
-                                 SERVICE_SEND_MAGIC_PACKET,
-                                 { CONF_ADAPTER :
-                                   self._adapter,
-                                   CONF_DUALSHOCK_BT_ADDRESS :
-                                   self._dsbt_address,
-                                   CONF_PLAYSTATION4_BT_ADDRESS : self._ps4bt_address
-                                 })
+        self._hass.services.call(
+            DOMAIN,
+            SERVICE_SEND_MAGIC_PACKET,
+            {
+                CONF_ADAPTER: self._adapter,
+                CONF_DUALSHOCK_BT_ADDRESS: self._dsbt_address,
+                CONF_PLAYSTATION4_BT_ADDRESS: self._ps4bt_address,
+            },
+        )
 
     def turn_off(self, **kwargs):
         """ Bt can not turn off Ps4."""
