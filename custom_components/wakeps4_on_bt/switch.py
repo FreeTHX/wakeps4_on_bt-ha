@@ -4,7 +4,7 @@ import logging
 import voluptuous as vol
 
 import homeassistant.helpers.config_validation as cv
-from homeassistant.components.switch import PLATFORM_SCHEMA, SwitchDevice
+from homeassistant.components.switch import PLATFORM_SCHEMA, SwitchEntity
 
 from .const import (
     CONF_ADAPTER,
@@ -36,7 +36,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     add_entities([WOBTPS4Switch(hass, adapter, ps4bt_address, dsbt_address)], True)
 
 
-class WOBTPS4Switch(SwitchDevice):
+class WOBTPS4Switch(SwitchEntity):
     """Representation of a wakeps4 on bt switch."""
 
     def __init__(self, hass, adapter, ps4bt_address, dsbt_address):
