@@ -4,5 +4,6 @@
   "documentation": "https://www.home-assistant.io/components/wakeps4_on_bt",
   "requirements": ["pywakeps4onbt"],
   "dependencies": [],
-  "codeowners": ["@FreeTHX"]
+  "codeowners": ["@FreeTHX"],
+  "version": "0.4"
 }
