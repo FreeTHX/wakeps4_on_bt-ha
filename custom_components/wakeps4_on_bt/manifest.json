@@ -5,5 +5,5 @@
   "requirements": ["pywakeps4onbt"],
   "dependencies": [],
   "codeowners": ["@FreeTHX"],
-  "version": "0.4"
+  "version": "0.4.0"
 }
