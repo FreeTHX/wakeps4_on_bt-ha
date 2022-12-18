@@ -2,7 +2,7 @@
   "domain": "wakeps4_on_bt",
   "name": "Wake a Ps4 over BlueTooth",
   "documentation": "https://www.home-assistant.io/components/wakeps4_on_bt",
-  "requirements": ["pywakeps4onbt>=0.7.2"],
+  "requirements": ["pywakeps4onbt>=0.8.0"],
   "dependencies": [],
   "codeowners": ["@FreeTHX"],
   "version": "0.8.0"
