@@ -1,9 +1,22 @@
 send_magic_packet:
   description: Send a 'magic packet' to wake up a ps4 over bluetooth
   fields:
-    adapter: {description: Bluetooth adapter used to send the packet, example: 'hci0'}
-    dsbt_address: {description: MAC address of the paired DualShock4, example: 'aa:bb:cc:dd:ee:ff'}
-    ps4bt_address: {description: MAC address of the Ps4, example: 'aa:bb:cc:dd:ee:ff'}
+    adapter: {
+      description: Bluetooth adapter used to send the packet,
+      required: true,
+      default: 'hci0',
+      example: 'hci0'
+    }
+    dsbt_address: {
+      description: MAC address of the paired DualShock4,
+      required: true,
+      example: 'aa:bb:cc:dd:ee:ff'
+    }
+    ps4bt_address: {
+      description: MAC address of the Ps4,
+      required: true,
+      example: 'aa:bb:cc:dd:ee:ff'
+    }
 get_bt_addr:
   description: Plug DualShock 4 on USB and launch this service to get DualShock 4 and Playstation 4 Bluetooth Addresses
   

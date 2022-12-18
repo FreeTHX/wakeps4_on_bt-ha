@@ -26,7 +26,7 @@ WAKEPS4_ON_BT_SEND_MAGIC_PACKET_SCHEMA = vol.Schema(
     {
         vol.Required(CONF_ADAPTER): cv.string,
         vol.Required(CONF_DUALSHOCK_BT_ADDRESS): cv.string,
-        vol.Required(CONF_PLAYSTATION4_BT_ADDRESS): cv.string,
+        vol.Required(CONF_PLAYSTATION4_BT_ADDRESS): cv.string
     }
 )
 GET_BT_ADDR_SCHEMA = vol.Schema({})
@@ -48,7 +48,7 @@ def setup(hass, config):
                 "Send magic packet to ps4 %s (spoofing ds4: %s) from %s",
                 ps4_address_toconnectto,
                 bt_address_tospoof,
-                adapter,
+                adapter
             )
         else:
             _LOGGER.error("Adapter %s does not yet support addr spoofing", adapter)
