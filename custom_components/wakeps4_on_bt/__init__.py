@@ -6,9 +6,8 @@ https://home-assistant.io/components/wakeps4_on_bt/
 """
 import logging
 
-import voluptuous as vol
-
 import homeassistant.helpers.config_validation as cv
+import voluptuous as vol
 import wakeps4onbt
 
 from .const import (
@@ -26,7 +25,7 @@ WAKEPS4_ON_BT_SEND_MAGIC_PACKET_SCHEMA = vol.Schema(
     {
         vol.Required(CONF_ADAPTER): cv.string,
         vol.Required(CONF_DUALSHOCK_BT_ADDRESS): cv.string,
-        vol.Required(CONF_PLAYSTATION4_BT_ADDRESS): cv.string
+        vol.Required(CONF_PLAYSTATION4_BT_ADDRESS): cv.string,
     }
 )
 GET_BT_ADDR_SCHEMA = vol.Schema({})
@@ -48,7 +47,7 @@ def setup(hass, config):
                 "Send magic packet to ps4 %s (spoofing ds4: %s) from %s",
                 ps4_address_toconnectto,
                 bt_address_tospoof,
-                adapter
+                adapter,
             )
         else:
             _LOGGER.error("Adapter %s does not yet support addr spoofing", adapter)

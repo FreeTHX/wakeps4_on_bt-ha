@@ -1,9 +1,8 @@
 """Support for wakeps4 on bt."""
 import logging
 
-import voluptuous as vol
-
 import homeassistant.helpers.config_validation as cv
+import voluptuous as vol
 from homeassistant.components.switch import PLATFORM_SCHEMA, SwitchEntity
 
 from .const import (
@@ -70,9 +69,9 @@ class WOBTPS4Switch(SwitchEntity):
         )
 
     def turn_off(self, **kwargs):
-        """ Bt can not turn off Ps4."""
+        """Bt can not turn off Ps4."""
         return
 
     def update(self):
-        """ No way to check (yet)."""
+        """No way to check (yet)."""
         return
